@@ -96,10 +96,31 @@
             z-index: 100;
         }
 
+        /* New styles for the Profile Picture */
         .sidebar-header {
             margin-bottom: 40px;
             border-bottom: 2px solid rgba(100,100,120,0.2);
             padding-bottom: 20px;
+            display: flex; /* Enable flex for image/name alignment */
+            align-items: center;
+            gap: 15px; /* Spacing between image and name */
+        }
+
+        .profile-pic-container {
+            flex-shrink: 0; /* Prevents image from shrinking */
+        }
+
+        .profile-pic {
+            width: 70px; /* Size of the profile picture */
+            height: 70px;
+            border-radius: 50%; /* Makes it circular */
+            object-fit: cover;
+            border: 3px solid #546e7a; /* Border color matching theme */
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+        
+        .name-and-title {
+            flex-grow: 1;
         }
 
         .sidebar-header h1 {
@@ -107,6 +128,7 @@
             font-weight: 700;
             color: #2c3e50;
             margin-bottom: 4px;
+            line-height: 1.1;
         }
 
         .sidebar-header .subtitle {
@@ -454,6 +476,13 @@
                 left: auto;
                 padding: 30px 20px;
             }
+            
+            /* Adjust sidebar header for mobile stacking */
+            .sidebar-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
 
             .main-content {
                 margin-left: 0; /* Removes offset */
@@ -491,6 +520,12 @@
                 padding: 20px;
             }
 
+            /* Ensure image is not giant in print */
+            .profile-pic {
+                width: 50px;
+                height: 50px;
+            }
+
             .job-card {
                 page-break-inside: avoid;
                 border-left-color: #ccc !important;
@@ -513,8 +548,19 @@
         <!-- SIDEBAR (Fixed on Desktop, Top on Mobile) -->
         <div class="sidebar">
             <div class="sidebar-header">
-                <h1>Anthony<br>Cassella</h1>
-                <div class="subtitle">Design & Technology Enthusiast</div>
+                <!-- Profile Picture Container -->
+                <div class="profile-pic-container">
+                    <!-- UPDATED: Use the relative path to your assets folder -->
+                    <img src="assets/profile.jpg" 
+                         alt="Anthony Cassella Profile Picture" 
+                         class="profile-pic"
+                         onerror="this.onerror=null; this.src='https://placehold.co/70x70/546e7a/ffffff?text=AC'">
+                </div>
+                
+                <div class="name-and-title">
+                    <h1>Anthony<br>Cassella</h1>
+                    <div class="subtitle">Design & Technology Enthusiast</div>
+                </div>
             </div>
 
             <div class="sidebar-section">
